@@ -79,3 +79,14 @@ Si no se encuentra el título, se muestra un mensaje de error.
 Mostrar los libros restantes:
 Después de la eliminación, se imprime el contenido actualizado de la librería.
 
+
+Mejoras opcionales:
+Eliminar por índice: Si hay títulos repetidos, puedes mostrar una lista numerada de coincidencias y permitir que el usuario elija cuál eliminar.
+Confirmar eliminación: Antes de eliminar, puedes preguntar al usuario si está seguro.
+Eliminar múltiples libros: Permite al usuario ingresar varios títulos separados por comas o eliminar todos los libros de la lista.
+
+System.out.println("¿Está seguro de eliminar este libro? (sí/no)");
+String confirmacion = scanner.nextLine();
+if (confirmacion.equalsIgnoreCase("sí")) {
+    libreria.remove(i);
+}
