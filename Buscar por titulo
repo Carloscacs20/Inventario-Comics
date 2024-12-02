@@ -62,3 +62,13 @@ public class Libreria {
         scanner.close();
     }
 }
+
+
+Explicación:
+Agregar libros: Igual que en el ejemplo anterior.
+Buscar libro por título:
+Se solicita al usuario un título.
+Se recorre la lista libreria usando un bucle for.
+Se compara el atributo titulo de cada objeto Libro con el título buscado (usando equalsIgnoreCase para ignorar mayúsculas/minúsculas).
+Si se encuentra el libro, se imprime y se sale del bucle.
+Manejo de casos no encontrados: Si el bucle termina sin encontrar coincidencias, se notifica al usuario.
