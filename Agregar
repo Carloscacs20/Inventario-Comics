@@ -1,0 +1,56 @@
+
+Ejemplo: Agregar libros a una librería
+Supongamos que un libro tiene un título y un autor, y queremos almacenarlos en una lista
+
+
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Libro {
+    String titulo;
+    String autor;
+
+    // Constructor
+    public Libro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + ", Autor: " + autor;
+    }
+}
+
+public class Libreria {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Libro> libreria = new ArrayList<>();
+
+        System.out.println("¿Cuántos libros desea agregar?");
+        int cantidad = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea después de la entrada numérica
+
+        // Bucle para agregar libros
+        for (int i = 0; i < cantidad; i++) {
+            System.out.println("Ingrese el título del libro " + (i + 1) + ":");
+            String titulo = scanner.nextLine();
+
+            System.out.println("Ingrese el autor del libro " + (i + 1) + ":");
+            String autor = scanner.nextLine();
+
+            // Crear un objeto Libro y agregarlo a la lista
+            libreria.add(new Libro(titulo, autor));
+        }
+
+        // Mostrar los libros agregados
+        System.out.println("\nLibros en la librería:");
+        for (Libro libro : libreria) {
+            System.out.println(libro);
+        }
+
+        scanner.close();
+    }
+}
