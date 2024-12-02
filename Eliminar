@@ -1,0 +1,81 @@
+
+Ejemplo: Eliminar libros en una librería
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Libro {
+    String titulo;
+    String autor;
+
+    // Constructor
+    public Libro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + ", Autor: " + autor;
+    }
+}
+
+public class Libreria {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Libro> libreria = new ArrayList<>();
+
+        // Agregar libros
+        System.out.println("¿Cuántos libros desea agregar?");
+        int cantidad = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea después de la entrada numérica
+
+        for (int i = 0; i < cantidad; i++) {
+            System.out.println("Ingrese el título del libro " + (i + 1) + ":");
+            String titulo = scanner.nextLine();
+
+            System.out.println("Ingrese el autor del libro " + (i + 1) + ":");
+            String autor = scanner.nextLine();
+
+            libreria.add(new Libro(titulo, autor));
+        }
+
+        // Eliminar un libro
+        System.out.println("\nIngrese el título del libro que desea eliminar:");
+        String tituloBuscado = scanner.nextLine();
+
+        boolean eliminado = false;
+        for (int i = 0; i < libreria.size(); i++) {
+            if (libreria.get(i).titulo.equalsIgnoreCase(tituloBuscado)) {
+                System.out.println("Libro eliminado: " + libreria.get(i));
+                libreria.remove(i); // Eliminar libro de la lista
+                eliminado = true;
+                break;
+            }
+        }
+
+        if (!eliminado) {
+            System.out.println("No se encontró ningún libro con el título: " + tituloBuscado);
+        }
+
+        // Mostrar todos los libros después de la eliminación
+        System.out.println("\nLibros restantes en la librería:");
+        for (Libro libro : libreria) {
+            System.out.println(libro);
+        }
+
+        scanner.close();
+    }
+}
+
+
+Explicación:
+Buscar libro por título:
+Se recorre la lista libreria con un bucle for y se compara el título de cada libro usando equalsIgnoreCase.
+Si se encuentra el libro, se elimina usando el método .remove(index).
+Confirmación de eliminación:
+Si se elimina un libro, se informa al usuario y se detiene el bucle con break.
+Si no se encuentra el título, se muestra un mensaje de error.
+Mostrar los libros restantes:
+Después de la eliminación, se imprime el contenido actualizado de la librería.
+
