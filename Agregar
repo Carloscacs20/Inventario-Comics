@@ -51,6 +51,14 @@ public class Libreria {
             System.out.println(libro);
         }
 
+
+Explicación:
+Clase Libro: Representa un libro con atributos titulo y autor. El método toString permite imprimir el objeto de forma legible.
+Bucle for:
+Solicita al usuario que ingrese el título y autor de cada libro.
+Usa el constructor de la clase Libro para crear un objeto y lo agrega a la lista libreria.
+Salida: Muestra todos los libros en la lista después de agregar.
+
         scanner.close();
     }
 }
