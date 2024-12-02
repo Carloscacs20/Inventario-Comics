@@ -1,0 +1,92 @@
+
+Ejemplo: Editar libros en una librería
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Libro {
+    String titulo;
+    String autor;
+
+    // Constructor
+    public Libro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + ", Autor: " + autor;
+    }
+}
+
+public class Libreria {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Libro> libreria = new ArrayList<>();
+
+        // Agregar libros
+        System.out.println("¿Cuántos libros desea agregar?");
+        int cantidad = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea después de la entrada numérica
+
+        for (int i = 0; i < cantidad; i++) {
+            System.out.println("Ingrese el título del libro " + (i + 1) + ":");
+            String titulo = scanner.nextLine();
+
+            System.out.println("Ingrese el autor del libro " + (i + 1) + ":");
+            String autor = scanner.nextLine();
+
+            libreria.add(new Libro(titulo, autor));
+        }
+
+        // Editar un libro
+        System.out.println("\nIngrese el título del libro que desea editar:");
+        String tituloBuscado = scanner.nextLine();
+
+        boolean encontrado = false;
+        for (Libro libro : libreria) {
+            if (libro.titulo.equalsIgnoreCase(tituloBuscado)) {
+                System.out.println("Libro encontrado: " + libro);
+
+                // Solicitar nuevos datos
+                System.out.println("Ingrese el nuevo título (o presione Enter para no cambiar):");
+                String nuevoTitulo = scanner.nextLine();
+                if (!nuevoTitulo.isEmpty()) {
+                    libro.titulo = nuevoTitulo; // Actualizar título
+                }
+
+                System.out.println("Ingrese el nuevo autor (o presione Enter para no cambiar):");
+                String nuevoAutor = scanner.nextLine();
+                if (!nuevoAutor.isEmpty()) {
+                    libro.autor = nuevoAutor; // Actualizar autor
+                }
+
+                System.out.println("El libro ha sido actualizado: " + libro);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("No se encontró ningún libro con el título: " + tituloBuscado);
+        }
+
+        // Mostrar todos los libros después de la edición
+        System.out.println("\nLibros en la librería:");
+        for (Libro libro : libreria) {
+            System.out.println(libro);
+        }
+
+        scanner.close();
+    }
+}
+
+Explicación:
+Buscar libro: Se solicita al usuario un título y se busca en la lista libreria usando un bucle for.
+Editar atributos:
+Si el libro se encuentra, se muestran los datos actuales y se permite al usuario ingresar nuevos valores.
+Si el usuario no ingresa nada (isEmpty()), se mantiene el valor anterior.
+Actualizar la lista: Como se trabaja directamente sobre el objeto, no es necesario reemplazarlo en la lista.
+Imprimir resultado final: Después de editar, se muestra la lista completa para verificar los cambios.
+
